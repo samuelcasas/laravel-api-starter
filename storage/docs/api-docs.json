@@ -1,0 +1,112 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "App Name",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/oauth/authorize": {
+            "get": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "TODO",
+                "description": "TODO",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/me": {
+            "get": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "TODO",
+                "description": "TODO",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/oauth/personal-access-tokens": {
+            "get": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "TODO",
+                "description": "TODO",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "oauth2": {
+            "type": "oauth2",
+            "description": "OAuth2 Implicit Grant",
+            "flow": "implicit",
+            "authorizationUrl": "https://example.org/oauth/authorize",
+            "tokenUrl": "/oauth/token",
+            "scopes": {
+                "scope": "Description of scope."
+            }
+        },
+        "api_key": {
+            "type": "apiKey",
+            "name": "api_key",
+            "in": "header"
+        }
+    }
+}
