@@ -26,3 +26,20 @@ Artisan::command('rol {model}', function ($model) {
         'type' => 'api',
     ]);
 })->describe('Rollback from Model');
+
+Artisan::command('user:create {name} {user} {password}',function($name, $user, $password){
+    if($this->confirm("Create user \"$user\"")) {
+        $user = \App\Models\User::create([
+            'name' => $name,
+            'email' => $user,
+            'password' => bcrypt($password)
+        ]);
+
+        if($user)
+        {
+            $this->info('User Created!');
+        } else {
+            $this->error('User not Created');
+        }
+    }
+})->describe('Create user');

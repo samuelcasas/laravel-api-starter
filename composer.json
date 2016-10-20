@@ -13,7 +13,8 @@
         "jlapp/swaggervel": "dev-master",
         "laravel/passport": "^1.0",
         "dingo/api": "1.0.x@dev",
-        "jedrzej/pimpable": "^0.0.4"
+        "jedrzej/pimpable": "^0.0.4",
+        "spatie/laravel-permission": "^1.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

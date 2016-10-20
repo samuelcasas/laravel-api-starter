@@ -6,13 +6,13 @@
     },
     "basePath": "/",
     "paths": {
-        "/oauth/authorize": {
+        "/tasks": {
             "get": {
                 "tags": [
-                    "OAuth"
+                    "Task"
                 ],
-                "summary": "TODO",
-                "description": "TODO",
+                "summary": "Get a listing of the Tasks.",
+                "description": "Get all Tasks",
                 "produces": [
                     "application/json"
                 ],
@@ -24,6 +24,12 @@
                                 "success": {
                                     "type": "boolean"
                                 },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Task"
+                                    }
+                                },
                                 "message": {
                                     "type": "string"
                                 }
@@ -32,17 +38,26 @@
                         }
                     }
                 }
-            }
-        },
-        "/me": {
-            "get": {
+            },
+            "post": {
                 "tags": [
-                    "OAuth"
+                    "Task"
                 ],
-                "summary": "TODO",
-                "description": "TODO",
+                "summary": "Store a newly created Task in storage",
+                "description": "Store Task",
                 "produces": [
                     "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Task that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -51,6 +66,9 @@
                             "properties": {
                                 "success": {
                                     "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Task"
                                 },
                                 "message": {
                                     "type": "string"
@@ -62,15 +80,24 @@
                 }
             }
         },
-        "/oauth/personal-access-tokens": {
+        "/tasks/{id}": {
             "get": {
                 "tags": [
-                    "OAuth"
+                    "Task"
                 ],
-                "summary": "TODO",
-                "description": "TODO",
+                "summary": "Display the specified Task",
+                "description": "Get Task",
                 "produces": [
                     "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Task",
+                        "required": true,
+                        "type": "integer"
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -79,6 +106,94 @@
                             "properties": {
                                 "success": {
                                     "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Task"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Update the specified Task in storage",
+                "description": "Update Task",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Task",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Task that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Task"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Remove the specified Task from storage",
+                "description": "Delete Task",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Task",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
                                 },
                                 "message": {
                                     "type": "string"
@@ -91,22 +206,49 @@
             }
         }
     },
-    "definitions": {},
+    "definitions": {
+        "Task": {
+            "required": [
+                "value",
+                "user_id"
+            ],
+            "properties": {
+                "value": {
+                    "description": "value",
+                    "type": "string"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "completed": {
+                    "description": "completed",
+                    "type": "boolean"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    },
     "securityDefinitions": {
         "oauth2": {
             "type": "oauth2",
             "description": "OAuth2 Implicit Grant",
             "flow": "implicit",
-            "authorizationUrl": "https://example.org/oauth/authorize",
+            "authorizationUrl": "/oauth/authorize",
             "tokenUrl": "/oauth/token",
             "scopes": {
-                "scope": "Description of scope."
+                "scope": "Login to our system"
             }
-        },
-        "api_key": {
-            "type": "apiKey",
-            "name": "api_key",
-            "in": "header"
         }
     }
 }

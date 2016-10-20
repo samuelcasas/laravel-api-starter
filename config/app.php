@@ -166,10 +166,11 @@ return [
         /*
          * Package Service Providers...
          */
-        Dingo\Api\Provider\LaravelServiceProvider::class,
         InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
         Jlapp\Swaggervel\SwaggervelServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...
