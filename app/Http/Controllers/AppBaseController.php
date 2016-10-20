@@ -12,11 +12,11 @@ use Response;
  *     title="App Name",
  *     version="1.0.0",
  *   ),
- *      @SWG\SecurityScheme(
- *         securityDefinition="oauth2", type="oauth2", description="OAuth2 Implicit Grant", flow="implicit",
- *         authorizationUrl="https://example.org/oauth/authorize",
- *         tokenUrl="/oauth/token",
- *         scopes={"scope": "Description of scope."}
+ *   @SWG\SecurityScheme(
+ *      securityDefinition="oauth2", type="oauth2", description="OAuth2 Implicit Grant", flow="implicit",
+ *      authorizationUrl="/oauth/authorize",
+ *      tokenUrl="/oauth/token",
+ *      scopes={"scope": "Login to our system"}
  *     )
  * )
  * This class should be parent class for other API controllers
