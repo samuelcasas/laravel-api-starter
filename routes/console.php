@@ -13,6 +13,11 @@ use Illuminate\Foundation\Inspiring;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
+Artisan::command('gen {model} {file}', function ($model, $file) {
+     Artisan::call("infyom:api",[
+        'model' => $model,
+        '--fieldsFile' => $file.'.json',
+         '--skip' => 'views,repository,tests,menu,dump-autoload,scaffold_routes,scaffold_controller',
+         '--quiet'
+    ]);
 })->describe('Display an inspiring quote');
