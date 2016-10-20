@@ -23,38 +23,6 @@ use Response;
  * Class AppBaseController
  */
 
-/**
- * @SWG\SecurityScheme(
- *   securityDefinition="api_key",
- *   type="apiKey",
- *   in="header",
- *   name="api_key"
- * )
- */
 
-/**
- * @SWG\Get(
- *      path="/oauth/personal-access-tokens",
- *      summary="TODO",
- *      tags={"OAuth"},
- *      description="TODO",
- *      produces={"application/json"},
- *      @SWG\Response(
- *          response=200,
- *          description="successful operation",
- *          @SWG\Schema(
- *              type="object",
- *              @SWG\Property(
- *                  property="success",
- *                  type="boolean"
- *              ),
- *              @SWG\Property(
- *                  property="message",
- *                  type="string"
- *              )
- *          )
- *      )
- * )
- */
 class AppBaseController extends Controller
 {}

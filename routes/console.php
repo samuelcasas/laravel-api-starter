@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -20,4 +18,4 @@ Artisan::command('gen {model} {file}', function ($model, $file) {
          '--skip' => 'views,repository,tests,menu,dump-autoload,scaffold_routes,scaffold_controller',
          '--quiet'
     ]);
-})->describe('Display an inspiring quote');
+})->describe('Generate from JSON');
