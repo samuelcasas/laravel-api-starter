@@ -12,7 +12,6 @@
         "infyomlabs/swagger-generator": "dev-master",
         "jlapp/swaggervel": "dev-master",
         "laravel/passport": "^1.0",
-        "infyomlabs/core-templates": "5.3.x-dev",
         "dingo/api": "1.0.x@dev",
         "jedrzej/pimpable": "^0.0.4"
     },

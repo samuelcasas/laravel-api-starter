@@ -19,3 +19,10 @@ Artisan::command('gen {model} {file}', function ($model, $file) {
          '--quiet'
     ]);
 })->describe('Generate from JSON');
+
+Artisan::command('rol {model}', function ($model) {
+    Artisan::call("infyom:rollback",[
+        'model' => $model,
+        'type' => 'api',
+    ]);
+})->describe('Rollback from Model');

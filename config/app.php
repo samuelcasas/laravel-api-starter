@@ -168,7 +168,6 @@ return [
          */
         Dingo\Api\Provider\LaravelServiceProvider::class,
         InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
-        InfyOm\CoreTemplates\CoreTemplatesServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Jlapp\Swaggervel\SwaggervelServiceProvider::class,
 

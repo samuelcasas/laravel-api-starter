@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2daee5d4f09e7bdfe755867ccfc92ad0",
-    "content-hash": "8383c824214137b6d2a2ad148c306202",
+    "hash": "79fbd4a21737100359f55db7442a482f",
+    "content-hash": "6129285f22b18ec0d9e7580425e9e1bd",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -627,49 +627,6 @@
                 "uri"
             ],
             "time": "2016-06-24 23:00:38"
-        },
-        {
-            "name": "infyomlabs/core-templates",
-            "version": "5.3.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/InfyOmLabs/core-templates.git",
-                "reference": "c73d770380eacd0ada258176262371e79d0747b7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/InfyOmLabs/core-templates/zipball/c73d770380eacd0ada258176262371e79d0747b7",
-                "reference": "c73d770380eacd0ada258176262371e79d0747b7",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "InfyOm\\CoreTemplates\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mitul Golakiya",
-                    "email": "me@mitul.me"
-                }
-            ],
-            "description": "Core Bootstrap templates for InfyOm Laravel Generator",
-            "keywords": [
-                "bootstrap",
-                "generator",
-                "laravel",
-                "templates"
-            ],
-            "time": "2016-09-24 11:37:32"
         },
         {
             "name": "infyomlabs/laravel-generator",
@@ -1529,16 +1486,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.31",
+            "version": "1.0.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "521a233642773505222a5dd53231ccf5b0607d5a"
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/521a233642773505222a5dd53231ccf5b0607d5a",
-                "reference": "521a233642773505222a5dd53231ccf5b0607d5a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
+                "reference": "1b5c4a0031697f46e779a9d1b309c2e1b24daeab",
                 "shasum": ""
             },
             "require": {
@@ -1608,7 +1565,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-10-19 13:15:54"
+            "time": "2016-10-19 20:38:46"
         },
         {
             "name": "league/fractal",
@@ -5131,7 +5088,6 @@
         "infyomlabs/laravel-generator": 20,
         "infyomlabs/swagger-generator": 20,
         "jlapp/swaggervel": 20,
-        "infyomlabs/core-templates": 20,
         "dingo/api": 20
     },
     "prefer-stable": false,

@@ -64,7 +64,7 @@ class $MODEL_NAME$APIController extends Controller
 
         return $this->response->array($$MODEL_NAME_CAMEL$);
     }
-    
+
     /**
      * @return mixed
      */

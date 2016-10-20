@@ -1,13 +1,12 @@
 <?php
 
-namespace $NAMESPACE_REQUEST$;
+namespace App\Http\Requests\API;
 
-use $NAMESPACE_REQUEST_BASE$\Request;
-use $NAMESPACE_MODEL$\$MODEL_NAME$;
+use App\Models\Task;
+use InfyOm\Generator\Request\APIRequest;
 
-class Create$MODEL_NAME$Request extends Request
+class CreateTaskAPIRequest extends APIRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,6 +24,6 @@ class Create$MODEL_NAME$Request extends Request
      */
     public function rules()
     {
-        return $MODEL_NAME$::$rules;
+        return Task::$rules;
     }
 }
