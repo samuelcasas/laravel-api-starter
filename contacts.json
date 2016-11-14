@@ -1,0 +1,37 @@
+[
+  {
+    "name": "id",
+    "dbType": "increments",
+    "primary": true,
+    "fillable": false
+  },
+  {
+    "name": "name",
+    "dbType": "string",
+    "validations": "required",
+    "fillable": true
+  },
+  {
+    "name": "client_id",
+    "dbType": "integer",
+    "validations": "required",
+    "fillable": true,
+    "relation": "mt1,Client"
+  },
+  {
+    "name": "user_id",
+    "dbType": "integer",
+    "fillable": false,
+    "relation": "mt1,User"
+  },
+  {
+    "name": "created_at",
+    "dbType": "timestamp",
+    "fillable": false
+  },
+  {
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "fillable": false
+  }
+]

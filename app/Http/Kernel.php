@@ -39,7 +39,6 @@ class Kernel extends HttpKernel
 
         'api:auth' =>
         [
-            'auth:api',
             'api.auth',
         ]
     ];

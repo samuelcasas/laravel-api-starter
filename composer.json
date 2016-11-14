@@ -14,7 +14,10 @@
         "laravel/passport": "^1.0",
         "dingo/api": "1.0.x@dev",
         "jedrzej/pimpable": "^0.0.4",
-        "spatie/laravel-permission": "^1.5"
+        "spatie/laravel-permission": "^1.5",
+        "hashids/hashids": "^1.0",
+        "vinkla/hashids": "^2.4",
+        "askedio/laravel5-soft-cascade": "^1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

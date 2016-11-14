@@ -6,13 +6,13 @@
     },
     "basePath": "/",
     "paths": {
-        "/tasks": {
+        "/clients": {
             "get": {
                 "tags": [
-                    "Task"
+                    "Client"
                 ],
-                "summary": "Get a listing of the Tasks.",
-                "description": "Get all Tasks",
+                "summary": "Get a listing of the Clients.",
+                "description": "Get all Clients",
                 "produces": [
                     "application/json"
                 ],
@@ -27,7 +27,7 @@
                                 "data": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/Task"
+                                        "$ref": "#/definitions/Client"
                                     }
                                 },
                                 "message": {
@@ -41,10 +41,10 @@
             },
             "post": {
                 "tags": [
-                    "Task"
+                    "Client"
                 ],
-                "summary": "Store a newly created Task in storage",
-                "description": "Store Task",
+                "summary": "Store a newly created Client in storage",
+                "description": "Store Client",
                 "produces": [
                     "application/json"
                 ],
@@ -52,10 +52,10 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Task that should be stored",
+                        "description": "Client that should be stored",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/Task"
+                            "$ref": "#/definitions/Client"
                         }
                     }
                 ],
@@ -68,7 +68,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Task"
+                                    "$ref": "#/definitions/Client"
                                 },
                                 "message": {
                                     "type": "string"
@@ -80,13 +80,13 @@
                 }
             }
         },
-        "/tasks/{id}": {
+        "/clients/{id}": {
             "get": {
                 "tags": [
-                    "Task"
+                    "Client"
                 ],
-                "summary": "Display the specified Task",
-                "description": "Get Task",
+                "summary": "Display the specified Client",
+                "description": "Get Client",
                 "produces": [
                     "application/json"
                 ],
@@ -94,7 +94,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Task",
+                        "description": "id of Client",
                         "required": true,
                         "type": "integer"
                     }
@@ -108,7 +108,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Task"
+                                    "$ref": "#/definitions/Client"
                                 },
                                 "message": {
                                     "type": "string"
@@ -121,10 +121,10 @@
             },
             "put": {
                 "tags": [
-                    "Task"
+                    "Client"
                 ],
-                "summary": "Update the specified Task in storage",
-                "description": "Update Task",
+                "summary": "Update the specified Client in storage",
+                "description": "Update Client",
                 "produces": [
                     "application/json"
                 ],
@@ -132,17 +132,17 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Task",
+                        "description": "id of Client",
                         "required": true,
                         "type": "integer"
                     },
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Task that should be updated",
+                        "description": "Client that should be updated",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/Task"
+                            "$ref": "#/definitions/Client"
                         }
                     }
                 ],
@@ -155,7 +155,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/Task"
+                                    "$ref": "#/definitions/Client"
                                 },
                                 "message": {
                                     "type": "string"
@@ -168,10 +168,10 @@
             },
             "delete": {
                 "tags": [
-                    "Task"
+                    "Client"
                 ],
-                "summary": "Remove the specified Task from storage",
-                "description": "Delete Task",
+                "summary": "Remove the specified Client from storage",
+                "description": "Delete Client",
                 "produces": [
                     "application/json"
                 ],
@@ -179,7 +179,927 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of Task",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/telephones": {
+            "get": {
+                "tags": [
+                    "Client Telephones"
+                ],
+                "summary": "Get a listing of the Clients.",
+                "description": "Get all Client Telephones",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Telephone"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Client Telephones"
+                ],
+                "summary": "Store a newly created Client Telephone in storage",
+                "description": "Store Telephone from Client",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Telephone that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Telephone"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Telephone"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/telephones/{telephoneID}": {
+            "get": {
+                "tags": [
+                    "Client Telephones"
+                ],
+                "summary": "Display the specified Telephone from Client",
+                "description": "Get Client Telephone",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "telephoneID",
+                        "in": "path",
+                        "description": "id of Telephone",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Client"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Client Telephones"
+                ],
+                "summary": "Update the specified Client telephone in storage",
+                "description": "Update Client",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "telephoneID",
+                        "in": "path",
+                        "description": "id of Telephone",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Telephone that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Telephone"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Telephone"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Client Telephones"
+                ],
+                "summary": "Remove the specified Telephone from Client from storage",
+                "description": "Delete Telephone from Client",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "telephoneID",
+                        "in": "path",
+                        "description": "id of Telephone",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/telephones/{telephoneID}/primary": {
+            "put": {
+                "tags": [
+                    "Client Telephones"
+                ],
+                "summary": "Set Client Telephone as Primary",
+                "description": "Set Client Telephone as Primary",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "telephoneID",
+                        "in": "path",
+                        "description": "id of Telephone",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Telephone"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/telephones/primary": {
+            "get": {
+                "tags": [
+                    "Client Telephones"
+                ],
+                "summary": "Set Client Telephone as Primary",
+                "description": "Set Client Telephone as Primary",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Telephone"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/contacts": {
+            "get": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Get a listing of the Contacts.",
+                "description": "Get all Contacts",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Contact"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Store a newly created Contact in storage",
+                "description": "Store Contact",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Contact that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Contact"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/contacts/{id}": {
+            "get": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Display the specified Contact",
+                "description": "Get Contact",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Contact",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Contact"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Update the specified Contact in storage",
+                "description": "Update Contact",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Contact",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Contact that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Contact"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Remove the specified Contact from storage",
+                "description": "Delete Contact",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Contact",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/items": {
+            "get": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Get a listing of the Items.",
+                "description": "Get all Items",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Item"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Store a newly created Item in storage",
+                "description": "Store Item",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Item that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Item"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Item"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/items/{id}": {
+            "get": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Display the specified Item",
+                "description": "Get Item",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Item",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Item"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Update the specified Item in storage",
+                "description": "Update Item",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Item",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Item that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Item"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Item"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Remove the specified Item from storage",
+                "description": "Delete Item",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Item",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/quotes": {
+            "get": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Get a listing of the Quotes.",
+                "description": "Get all Quotes",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Quote"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Store a newly created Quote in storage",
+                "description": "Store Quote",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Quote that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Quote"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Quote"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/quotes/{id}": {
+            "get": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Display the specified Quote",
+                "description": "Get Quote",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Quote",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Quote"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Update the specified Quote in storage",
+                "description": "Update Quote",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Quote",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Quote that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Quote"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Quote"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Quote"
+                ],
+                "summary": "Remove the specified Quote from storage",
+                "description": "Delete Quote",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Quote",
                         "required": true,
                         "type": "integer"
                     }
@@ -207,14 +1127,23 @@
         }
     },
     "definitions": {
-        "Task": {
+        "Client": {
             "required": [
-                "value",
-                "user_id"
+                "name",
+                "prefix"
             ],
             "properties": {
-                "value": {
-                    "description": "value",
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "prefix": {
+                    "description": "prefix",
                     "type": "string"
                 },
                 "user_id": {
@@ -222,9 +1151,176 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "completed": {
-                    "description": "completed",
-                    "type": "boolean"
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Contact": {
+            "required": [
+                "name",
+                "client_id"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "client_id": {
+                    "description": "client_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Item": {
+            "required": [
+                "quote_id",
+                "quantity",
+                "description",
+                "price",
+                "user_id"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "quote_id": {
+                    "description": "quote_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "order": {
+                    "description": "order",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "quantity": {
+                    "description": "quantity",
+                    "type": "number",
+                    "format": "float"
+                },
+                "description": {
+                    "description": "description",
+                    "type": "string"
+                },
+                "price": {
+                    "description": "price",
+                    "type": "number",
+                    "format": "float"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Quote": {
+            "required": [
+                "client_id",
+                "contact_id",
+                "status"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "client_id": {
+                    "description": "client_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "contact_id": {
+                    "description": "contact_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "status": {
+                    "description": "status",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Telephone": {
+            "required": [
+                "number"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "number": {
+                    "description": "number",
+                    "type": "string"
+                },
+                "telephoneable_id": {
+                    "description": "telephoneable_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "telephoneable_type": {
+                    "description": "telephoneable_type",
+                    "type": "string"
                 },
                 "created_at": {
                     "description": "created_at",

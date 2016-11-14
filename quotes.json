@@ -1,0 +1,44 @@
+[
+  {
+    "name": "id",
+    "dbType": "increments",
+    "primary": true,
+    "fillable": false
+  },
+  {
+    "name": "client_id",
+    "dbType": "integer",
+    "validations": "required|exists:clients",
+    "fillable": true,
+    "relation": "mt1,Client"
+  },
+  {
+    "name": "contact_id",
+    "dbType": "integer",
+    "validations": "required|exists:contacts",
+    "fillable": true,
+    "relation": "mt1,Contact"
+  },
+  {
+    "name": "status",
+    "dbType": "integer",
+    "validations": "required",
+    "fillable": true
+  },
+  {
+    "name": "user_id",
+    "dbType": "integer",
+    "fillable": false,
+    "relation": "mt1,User"
+  },
+  {
+    "name": "created_at",
+    "dbType": "timestamp",
+    "fillable": false
+  },
+  {
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "fillable": false
+  }
+]

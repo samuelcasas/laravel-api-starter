@@ -1,0 +1,55 @@
+[
+  {
+    "name": "id",
+    "dbType": "increments",
+    "primary": true,
+    "fillable": false
+  },
+  {
+    "name": "quote_id",
+    "dbType": "integer",
+    "validations": "required|exists:quotes,id",
+    "fillable": true,
+    "relation": "mt1,Quote"
+  },
+  {
+    "name": "order",
+    "dbType": "integer",
+    "fillable": true
+  },
+  {
+    "name": "quantity",
+    "dbType": "decimal,15,4",
+    "validations": "required",
+    "fillable": true
+  },
+  {
+    "name": "description",
+    "dbType": "text",
+    "validations": "required",
+    "fillable": true
+  },
+  {
+    "name": "price",
+    "dbType": "decimal,15,4",
+    "validations": "required",
+    "fillable": true
+  },
+  {
+    "name": "user_id",
+    "dbType": "integer",
+    "validations": "required",
+    "fillable": false,
+    "relation": "mt1,User"
+  },
+  {
+    "name": "created_at",
+    "dbType": "timestamp",
+    "fillable": false
+  },
+  {
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "fillable": false
+  }
+]

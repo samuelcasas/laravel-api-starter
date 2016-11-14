@@ -1,0 +1,34 @@
+[
+  {
+    "name": "id",
+    "dbType": "increments",
+    "primary": true,
+    "fillable": false
+  },
+  {
+    "name": "number",
+    "dbType": "string",
+    "validations": "required",
+    "fillable": true
+  },
+  {
+    "name": "telephoneable_id",
+    "dbType": "integer",
+    "fillable": true
+  },
+  {
+    "name": "telephoneable_type",
+    "dbType": "string",
+    "fillable": true
+  },
+  {
+    "name": "created_at",
+    "dbType": "timestamp",
+    "fillable": false
+  },
+  {
+    "name": "updated_at",
+    "dbType": "timestamp",
+    "fillable": false
+  }
+]
