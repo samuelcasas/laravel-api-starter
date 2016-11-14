@@ -1,4 +1,5 @@
 ```
+git clone --depth 1 https://github.com/samuelcasas/laravel-api-starter.git
 artisan migrate
 artisan passport:install
 ```
