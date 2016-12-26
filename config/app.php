@@ -172,6 +172,7 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Askedio\SoftCascade\Providers\GenericServiceProvider::class,
+        Czim\NestedModelUpdater\NestedModelUpdaterServiceProvider::class,
 
         /*
          * Application Service Providers...

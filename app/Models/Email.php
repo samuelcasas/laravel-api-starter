@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Czim\NestedModelUpdater\Traits\NestedUpdatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="Telephone",
- *      required={"number"},
+ *      definition="Email",
+ *      required={"address"},
  *      @SWG\Property(
  *          property="id",
  *          description="id",
@@ -16,19 +15,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="number",
- *          description="number",
+ *          property="address",
+ *          description="email address",
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="telephoneable_id",
- *          description="telephoneable_id",
+ *          property="emaileable_id",
+ *          description="emaileable_id",
  *          type="integer",
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="telephoneable_type",
- *          description="telephoneable_type",
+ *          property="emaileable_type",
+ *          description="emaileable_type",
  *          type="string"
  *      ),
  *      @SWG\Property(
@@ -45,21 +44,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class Telephone extends Model
+class Email extends Model
 {
-    use SoftDeletes, NestedUpdatable;
+    use SoftDeletes;
 
-    public $table = 'telephones';
+    public $table = 'emails';
 
     protected $dates = ['deleted_at'];
 
     public $fillable = [
-        'number',
+        'address',
         'primary',
         'type'
     ];
 
-    protected $hidden = ['telephoneable_id','telephoneable_type'];
+    protected $hidden = ['emaileable_id','emaileable_type'];
 
     /**
      * The attributes that should be casted to native types.
@@ -67,9 +66,9 @@ class Telephone extends Model
      * @var array
      */
     protected $casts = [
-        'number' => 'string',
-        'telephoneable_id' => 'integer',
-        'telephoneable_type' => 'string',
+        'address' => 'string',
+        'emaileable_id' => 'integer',
+        'emaileable_type' => 'string',
         'primary' => 'bool',
     ];
 
@@ -79,31 +78,21 @@ class Telephone extends Model
      * @var array
      */
     public static $rules = [
-        'number' => 'required',
+        'address' => 'required',
         'type' => 'required'
     ];
 
     public function entity()
     {
-        return $this->morphTo('telephoneable');
+        return $this->morphTo('emaileable');
     }
 
     public function makePrimary()
     {
-        $this->entity->telephones()->where('primary', 1)->update([ 'primary' => 0 ]);
+        $this->entity->emails()->where('primary', 1)->update([ 'primary' => 0 ]);
 
         $this->update([ 'primary' => 1 ]);
 
         return $this->fresh();
-    }
-
-    public function setDeleteAttribute($attr)
-    {
-        return false;
-    }
-
-    public function update(array $attributes = [], array $options = [])
-    {
-        dd($attributes);
     }
 }

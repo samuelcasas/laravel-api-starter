@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
  * @SWG\Swagger(
  *   basePath="/",
  *   @SWG\Info(
- *     title="App Name",
+ *     title="D'Casas App",
  *     version="1.0.0",
  *   ),
  *   @SWG\SecurityScheme(

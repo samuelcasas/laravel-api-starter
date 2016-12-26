@@ -4,21 +4,19 @@ namespace App\Models;
 
 trait Telephoneable
 {
-    protected static $type = 'telephoneable';
-
     public function telephones()
     {
-        return $this->morphMany(Telephone::class, self::$type);
+        return $this->morphMany(Telephone::class, 'telephoneable');
     }
 
     public function telephonesWithoutPrimary()
     {
-        return $this->morphMany(Telephone::class, self::$type)->where('primary',0);
+        return $this->morphMany(Telephone::class, 'telephoneable')->where('primary',0);
     }
 
     public function primaryTelephone()
     {
-        return $this->morphOne(Telephone::class, self::$type)->where('primary',1);
+        return $this->morphOne(Telephone::class, 'telephoneable')->where('primary',1);
     }
 
     public function getTelephonesCountAttribute()

@@ -3,11 +3,12 @@
 namespace App\Http\Requests\API;
 
 use App\Models\Client;
+use Czim\NestedModelUpdater\Requests\AbstractNestedDataRequest;
 use Dingo\Api\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class UpdateClientAPIRequest extends FormRequest
+class UpdateClientAPIRequest extends AbstractNestedDataRequest 
 {
     /**
      * Determine if the user is authorized to make this request.

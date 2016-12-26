@@ -1,32 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Contacts;
 
-use App\Http\Requests\API\CreateClientAPIRequest;
-use App\Http\Requests\API\UpdateClientAPIRequest;
-use App\Models\Client;
+use App\Http\Requests\API\CreateContactAPIRequest;
+use App\Http\Requests\API\UpdateContactAPIRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Dingo\Api\Routing\Helpers;
 
 /**
- * Class ClientController
+ * Class ContactController
  * @package App\Http\Controllers\API
  */
 
-class ClientAPIController extends Controller
+class ContactAPIController extends Controller
 {
     use Helpers;
 
     /**
-     * @param Request $request
      * @return Response
      *
      * @SWG\Get(
-     *      path="/clients",
-     *      summary="Get a listing of the Clients.",
-     *      tags={"Client"},
-     *      description="Get all Clients",
+     *      path="/contacts",
+     *      summary="Get a listing of the Contacts.",
+     *      tags={"Contact"},
+     *      description="Get all Contacts",
      *      produces={"application/json"},
      *      @SWG\Response(
      *          response=200,
@@ -40,7 +39,7 @@ class ClientAPIController extends Controller
      *              @SWG\Property(
      *                  property="data",
      *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/Client")
+     *                  @SWG\Items(ref="#/definitions/Contact")
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -50,29 +49,29 @@ class ClientAPIController extends Controller
      *      )
      * )
      */
-    public function index(Request $req)
+    public function index()
     {
-        $clients = $this->getModel()->pimp()->fetch();
+        $contacts = $this->getModel()->pimp()->fetch();
 
-        return $this->response->array($clients);
+        return $this->response->array($contacts);
     }
 
     /**
-     * @param CreateClientAPIRequest $request
+     * @param CreateContactAPIRequest $request
      * @return Response
      *
      * @SWG\Post(
-     *      path="/clients",
-     *      summary="Store a newly created Client in storage",
-     *      tags={"Client"},
-     *      description="Store Client",
+     *      path="/contacts",
+     *      summary="Store a newly created Contact in storage",
+     *      tags={"Contact"},
+     *      description="Store Contact",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Client that should be stored",
+     *          description="Contact that should be stored",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Client")
+     *          @SWG\Schema(ref="#/definitions/Contact")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -85,7 +84,7 @@ class ClientAPIController extends Controller
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Client"
+     *                  ref="#/definitions/Contact"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -95,13 +94,13 @@ class ClientAPIController extends Controller
      *      )
      * )
      */
-    public function store(CreateClientAPIRequest $request)
+    public function store(CreateContactAPIRequest $request)
     {
         $input = $request->all();
 
-        $client = $this->getModel()->create($input);
+        $contact = $this->getModel()->create($input);
 
-        return $this->response->array($client->toArray());
+        return $this->response->array($contact->toArray());
     }
 
     /**
@@ -109,14 +108,14 @@ class ClientAPIController extends Controller
      * @return Response
      *
      * @SWG\Get(
-     *      path="/clients/{id}",
-     *      summary="Display the specified Client",
-     *      tags={"Client"},
-     *      description="Get Client",
+     *      path="/contacts/{id}",
+     *      summary="Display the specified Contact",
+     *      tags={"Contact"},
+     *      description="Get Contact",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Client",
+     *          description="id of Contact",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -132,7 +131,7 @@ class ClientAPIController extends Controller
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Client"
+     *                  ref="#/definitions/Contact"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -144,26 +143,26 @@ class ClientAPIController extends Controller
      */
     public function show($id)
     {
-        /** @var Client $client */
-        $client = $this->getModel()->pimp()->fetchSingle($id);
+        /** @var Contact $contact */
+        $contact = $this->getModel()->pimp()->findOrFail($id);
 
-        return $this->response->array($client->toArray());
+        return $this->response->array($contact->toArray());
     }
 
     /**
      * @param int $id
-     * @param UpdateClientAPIRequest $request
+     * @param UpdateContactAPIRequest $request
      * @return Response
      *
      * @SWG\Put(
-     *      path="/clients/{id}",
-     *      summary="Update the specified Client in storage",
-     *      tags={"Client"},
-     *      description="Update Client",
+     *      path="/contacts/{id}",
+     *      summary="Update the specified Contact in storage",
+     *      tags={"Contact"},
+     *      description="Update Contact",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Client",
+     *          description="id of Contact",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -171,9 +170,9 @@ class ClientAPIController extends Controller
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="Client that should be updated",
+     *          description="Contact that should be updated",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Client")
+     *          @SWG\Schema(ref="#/definitions/Contact")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -186,7 +185,7 @@ class ClientAPIController extends Controller
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/Client"
+     *                  ref="#/definitions/Contact"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -196,16 +195,16 @@ class ClientAPIController extends Controller
      *      )
      * )
      */
-    public function update($id, UpdateClientAPIRequest $request)
+    public function update($id, UpdateContactAPIRequest $request)
     {
         $input = $request->all();
 
-        /** @var Client $client */
-        $client = $this->getModel()->findOrFail($id);
+        /** @var Contact $contact */
+        $contact = $this->getModel()->findOrFail($id);
 
-        $client->update($input);
+        $contact->update($input);
 
-        return $this->response->array($client->toArray());
+        return $this->response->array($contact->toArray());
     }
 
     /**
@@ -213,14 +212,14 @@ class ClientAPIController extends Controller
      * @return Response
      *
      * @SWG\Delete(
-     *      path="/clients/{id}",
-     *      summary="Remove the specified Client from storage",
-     *      tags={"Client"},
-     *      description="Delete Client",
+     *      path="/contacts/{id}",
+     *      summary="Remove the specified Contact from storage",
+     *      tags={"Contact"},
+     *      description="Delete Contact",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of Client",
+     *          description="id of Contact",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -248,12 +247,12 @@ class ClientAPIController extends Controller
      */
     public function destroy($id)
     {
-        /** @var Client $client */
-        $client = $this->getModel()->findOrFail($id);
+        /** @var Contact $contact */
+        $contact = $this->getModel()->findOrFail($id);
 
-        $client->delete();
+        $contact->delete();
 
-        return $this->response->array($client->toArray());
+        return $this->response->array($contact->toArray());
     }
 
     /**
@@ -261,13 +260,6 @@ class ClientAPIController extends Controller
      */
     protected function getModel()
     {
-        return $this->user->clients();
-    }
-
-    public function validatePrefix($prefix)
-    {
-        $count = $this->getModel()->where('prefix', $prefix)->count();
-
-        return $count;
+        return $this->user->contacts();
     }
 }

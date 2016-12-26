@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateTelephonesTable extends Migration
+class CreateEmailsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,12 +13,12 @@ class CreateTelephonesTable extends Migration
      */
     public function up()
     {
-        Schema::create('telephones', function (Blueprint $table) {
+        Schema::create('emails', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('number');
+            $table->string('address');
             $table->boolean('primary')->default(0);
-            $table->integer('telephoneable_id');
-            $table->string('telephoneable_type');
+            $table->integer('emaileable_id');
+            $table->string('emaileable_type');
             $table->string('type')->default('other');
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +32,6 @@ class CreateTelephonesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('telephones');
+        Schema::drop('emails');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Clients;
 
 use App\Http\Requests\API\CreateTelephoneAPIRequest;
 use App\Http\Requests\API\UpdateTelephoneAPIRequest;
@@ -20,7 +20,6 @@ class ClientTelephonesAPIController extends Controller
 
     /**
      * @param $clientID
-     * @param Request $req
      * @return Response
      * @internal param Request $request
      * @SWG\Get(
@@ -116,11 +115,6 @@ class ClientTelephonesAPIController extends Controller
 
         /** @var Telephone $telephone */
         $telephone = $this->getModel($clientID)->create($input);
-
-        if($this->getModelOriginal()->findOrFail($clientID)->telephones()->count() == 1) {
-            $telephone->makePrimary();
-            $telephone = $telephone->fresh();
-        }
 
         return $this->response->array($telephone->toArray());
     }

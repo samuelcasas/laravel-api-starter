@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "App Name",
+        "title": "D'Casas App",
         "version": "1.0.0"
     },
     "basePath": "/",
@@ -194,6 +194,329 @@
                                 },
                                 "data": {
                                     "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/emails": {
+            "get": {
+                "tags": [
+                    "Client Emails"
+                ],
+                "summary": "Get a listing of the Clients.",
+                "description": "Get all Client Emails",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Email"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Client Emails"
+                ],
+                "summary": "Store a newly created Client Email in storage",
+                "description": "Store Email from Client",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Email that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Email"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/emails/{emailID}": {
+            "get": {
+                "tags": [
+                    "Client Emails"
+                ],
+                "summary": "Display the specified Email from Client",
+                "description": "Get Client Email",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "emailID",
+                        "in": "path",
+                        "description": "id of Email",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Client"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Client Emails"
+                ],
+                "summary": "Update the specified Client Email in storage",
+                "description": "Update Client",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "emailID",
+                        "in": "path",
+                        "description": "id of Email",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Email that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Email"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Client Emails"
+                ],
+                "summary": "Remove the specified Email from Client from storage",
+                "description": "Delete Email from Client",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "emailID",
+                        "in": "path",
+                        "description": "id of Email",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/emails/{emailID}/primary": {
+            "put": {
+                "tags": [
+                    "Client Emails"
+                ],
+                "summary": "Set Client Email as Primary",
+                "description": "Set Client Email as Primary",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "emailID",
+                        "in": "path",
+                        "description": "id of Email",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Email"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/{clientID}/emails/primary": {
+            "get": {
+                "tags": [
+                    "Client Emails"
+                ],
+                "summary": "Set Client Email as Primary",
+                "description": "Set Client Email as Primary",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "clientID",
+                        "in": "path",
+                        "description": "id of Client",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Email"
                                 },
                                 "message": {
                                     "type": "string"
@@ -1127,6 +1450,41 @@
         }
     },
     "definitions": {
+        "Address": {
+            "required": [
+                "address"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "address": {
+                    "description": "email address",
+                    "type": "string"
+                },
+                "emaileable_id": {
+                    "description": "emaileable_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "emaileable_type": {
+                    "description": "emaileable_type",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
         "Client": {
             "required": [
                 "name",
@@ -1187,6 +1545,41 @@
                     "description": "user_id",
                     "type": "integer",
                     "format": "int32"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Email": {
+            "required": [
+                "address"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "address": {
+                    "description": "email address",
+                    "type": "string"
+                },
+                "emaileable_id": {
+                    "description": "emaileable_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "emaileable_type": {
+                    "description": "emaileable_type",
+                    "type": "string"
                 },
                 "created_at": {
                     "description": "created_at",

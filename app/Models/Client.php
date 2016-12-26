@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Czim\NestedModelUpdater\Traits\NestedUpdatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -47,7 +48,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Client extends Model
 {
-    use SoftDeletes, HelperTrait, SoftCascadeTrait, Telephoneable;
+    use SoftDeletes, HelperTrait, SoftCascadeTrait, NestedUpdatable,
+        Telephoneable,
+        Emaileable,
+        Addressable;
 
     protected $softCascade = ['contacts','quotes'];
     public $table = 'clients';
